@@ -13,20 +13,17 @@ const urlFor = (source: SanityImageSource) =>
     : null;
 
 const options = { next: { revalidate: 30 } };
-`type Params = Promise<{ slug: string[] }>;
-export default async function Page({ params }: { params: Params }) {
-const { slug } = await params;
-}`
 
-export default async function PostPage(
-  { params }: { params: Params })
-const { slug } = await params;
+
 
  
   const post = await client.fetch<SanityDocument>(POST_QUERY, params, options);
   const postImageUrl = post.image
     ? urlFor(post.image)?.width(550).height(310).url()
     : null;
+export default async function PostPage(
+  { params }: { params: Params })
+const { slug } = await params;
 
   return (
     <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
