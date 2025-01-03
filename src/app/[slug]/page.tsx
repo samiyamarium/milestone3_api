@@ -18,11 +18,11 @@ export default async function Page({ params }: { params: Params }) {
 const { slug } = await params;
 }`
 
-export default async function PostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function PostPage(
+  { params }: { params: Params })
+const { slug } = await params;
+
+ 
   const post = await client.fetch<SanityDocument>(POST_QUERY, params, options);
   const postImageUrl = post.image
     ? urlFor(post.image)?.width(550).height(310).url()
